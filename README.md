@@ -43,3 +43,6 @@ So I hope this project is the first of many I am able to share with the communit
   - Edit Sass files rather than overwriting everything in plain CSS
   - Add related artists to related artists, possibly 3 related artists for each of the 6 related artists now
   - Possibly find a better way to create the "org chart" lines rather than bastardizing the rows and columns, but then again, it works as is, and should scale nicely on different screen sizes.
+  - Add localstorage db to store user info, access tokens, etc
+  - refactor search form to maximize screen real estate for displaying related artist info.
+  - Add client side JS code for allowing user to login to Spotify... I didn't realize this could be done entirely client side until just now.
