@@ -8,6 +8,7 @@
         "animatecss": "git@github.com:daneden/animate.css.git#3.2.0",
         "twittertypeahead": "git@github.com:twitter/typeahead.js.git#0.10.5",
         "jquerytemplate": "git@github.com:BorisMoore/jquery-tmpl.git",
-        "materialize": "git@github.com:Dogfalo/materialize.git#0.94.1"
+        "materialize": "git@github.com:Dogfalo/materialize.git#0.94.1",
+        "spotifyjsapi": "git@github.com:JMPerez/spotify-web-api-js.git#0.7.0"
     }
 }
