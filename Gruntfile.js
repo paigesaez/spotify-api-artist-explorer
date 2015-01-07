@@ -72,9 +72,23 @@ module.exports = function (grunt) {
         flatten: true,
         filter: 'isFile'
       },
+      spotifyjsapi: {
+        expand: true,
+        src: 'src/vendors/spotifyjsapi/spotify-web-api.js',
+        dest: 'js/',
+        flatten: true,
+        filter: 'isFile'
+      }, 
+      localstoragedb: {
+        expand: true,
+        src: ['src/vendors/localstoragedb/localstoragedb.js', 'src/vendors/localstoragedb/localstoragedb.min.js'],
+        dest: 'js/',
+        flatten: true,
+        filter: 'isFile'
+      },         
       mainjs: {
         expand: true,
-        src: 'src/js/main.js',
+        src: ['src/js/main.js', 'spotifykeys.js'],
         dest: 'js/',
         flatten: true,
         filter: 'isFile'

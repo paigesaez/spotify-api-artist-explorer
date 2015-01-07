@@ -127,7 +127,9 @@
         <ul id="nav-mobile" class="right side-nav">
           <li><a href="#">Navbar Link</a></li>
           <li><a class="waves-effect waves-light modal-trigger" href="#ajaxmodal">Ajax Log</a></li>
-        </ul><a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+          <li><a class="waves-effect waves-light modal-trigger" id="spotifylogin" href="#">Login</a></li>
+        </ul>
+        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
       </div>
     </div>
   </nav>
@@ -312,12 +314,25 @@
   <script src="js/jquery.tmpl.min.js"></script>
   <script src="js/typeahead.bundle.min.js"></script>
   <script src="js/materialize.min.js"></script>
+  <script src="js/spotify-web-api.js"></script>
+  <script src="js/localstoragedb.min.js"></script>
+  <script src="js/spotifykeys.js"></script>
   <script src="src/js/main.js"></script>
 
   <script>
 
+    var expiresIn = 3600;
+    var retrieved = new Date();
+  
 
+    var expires = new Date();
+    expires.setSeconds(expires.getSeconds() + expiresIn); 
+  
 
+    
+    
+    console.log('retrieved: ', retrieved);
+    console.log('expires: ', expires);
   </script>
 
   </body>

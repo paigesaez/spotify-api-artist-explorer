@@ -1,4 +1,69 @@
-  
+
+var SPOTIFY_SCOPES = 'playlist-read-private playlist-modify-public playlist-modify-private user-library-read user-library-modify user-read-private user-read-email';
+var REDIRECT_URL = 'http://localhost/spotify-materialize/index.html';
+var SPOTIFY_AUTHORIZE_URL = 'https://accounts.spotify.com/authorize';
+var REQUEST_TOKEN_PARAMS = {
+  client_id: SPOTIFY_CLIENT_ID,
+  response_type: 'token',
+  redirect_uri: REDIRECT_URL,
+  scope: SPOTIFY_SCOPES,
+  show_dialog: true
+};
+var BUILT_URL = buildURL(SPOTIFY_AUTHORIZE_URL, REQUEST_TOKEN_PARAMS);
+var accessToken;
+var tokenType;
+var expiresIn;
+    
+    
+var spotifyApi = new SpotifyWebApi();
+
+
+
+var ls = new localStorageDB('spotify', localStorage);
+if (ls.isNew()) {
+  ls.createTable('userinfo', ['country', 'display_name', 'email', 'external_urls', 'followers', 'href', 'type', 'images', 'product', 'uri']);
+  ls.createTable('logininfo', ['accessToken', 'tokenType', 'retrieved', 'expires']);
+  ls.commit();
+}
+
+ 
+
+  if (window.location.hash !== '') {
+    accessToken = getHashValue('access_token');
+    tokenType = getHashValue('token_type');
+    expiresIn = getHashValue('expires_in');
+    console.log('accessToken: ', accessToken);
+    console.log('tokenType: ', tokenType);
+    console.log('expiresIn: ', expiresIn);
+    
+    var retrieved = new Date();
+    var expires = new Date();
+    expires.setSeconds(expires.getSeconds() + expiresIn);
+    
+
+    ls.insertOrUpdate('logininfo', {accessToken: accessToken}, {accessToken: accessToken, tokenType: tokenType, retrieved: retrieved, expires: expires});
+    ls.commit();    
+    
+    spotifyApi.setAccessToken(accessToken);    
+    
+    spotifyApi.getMe()
+      .then(function(data) {
+        console.log('Me: ', data);
+      }, function(err) {
+        console.error(err);
+      }); 
+    
+    spotifyApi.getUserPlaylists('peterthomaslane')
+      .then(function(data) {
+        console.log('User playlists', data);
+      }, function(err) {
+        console.error(err);
+      }); 
+    
+  }
+
+
+ 
   var BASE_URL = 'https://api.spotify.com/v1/';
   var SEARCH_LIMIT = 5;
   var RELATED_LIMIT = 6;
@@ -9,6 +74,9 @@
   var $spotifyResults = $('#spotifyresults');  
   var searchResultData = {};
 
+  
+  
+  
   
   
   
@@ -66,6 +134,13 @@
     $('#hiddenrow').removeClass('animated bounceInDown').addClass('hidden'); 
   });
   
+  $('body').on('click', '#spotifylogin', function(e) {
+    e.preventDefault();
+    console.log($(this).attr('id') + ' clicked');    
+    console.log(e);
+    window.location = BUILT_URL;
+  });  
+  
   
 searchArtists('Dave Matthews');
   
@@ -118,4 +193,46 @@ searchArtists('Dave Matthews');
 
 function justDisplayResponse(response) {
   console.log('response: ', response);
+}
+
+
+
+
+
+
+
+
+
+
+
+function buildURL(url, parameters) {
+  var qs = '';
+  for (var key in parameters) {
+    if (parameters.hasOwnProperty(key)) {
+      var value = parameters[key];
+      qs += encodeURIComponent(key) + '=' + encodeURIComponent(value) + '&';
+    }
+  }
+  if (qs.length > 0){
+    qs = qs.substring(0, qs.length - 1); //chop off last '&'
+    url = url + '?' + qs;
+  }
+  return url;
+}
+
+
+function getHashValue(value) {
+  var hash = [];
+  var returnval = false;
+  var q = window.location.href.split('#')[1];
+  if(q !== undefined){
+    q = q.split('&');
+    for(var i = 0; i < q.length; i++){				
+      hash = q[i].split('=');
+      if (hash[0] === value) {
+        returnval = hash[1];
+      }				
+    }
+  }
+  return returnval;
 }
