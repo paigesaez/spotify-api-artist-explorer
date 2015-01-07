@@ -35,3 +35,11 @@ So I hope this project is the first of many I am able to share with the communit
    - I don't think I have even made use of this as of yet...
   - <a href="https://github.com/twitter/typeahead.js">https://github.com/twitter/typeahead.js</a>
     - I think this would be an ideal way to display the search results, but have not done so yet.
+
+#To Do:
+  - Convert PHP to HTML; it is not needed and removing it will allow the demo to be run right on Github
+  - Add an about page
+  - Clean up footer
+  - Edit Sass files rather than overwriting everything in plain CSS
+  - Add related artists to related artists, possibly 3 related artists for each of the 6 related artists now
+  - Possibly find a better way to create the "org chart" lines rather than bastardizing the rows and columns, but then again, it works as is, and should scale nicely on different screen sizes.
