@@ -56,7 +56,7 @@
     getRelatedByID(selectedID);
   });
   
-searchArtists('Dave Matthews');
+//searchArtists('Dave Matthews');
   
   function getRelatedByID(artistID) {
     return $.get(BASE_URL+'artists/'+artistID+'/related-artists')

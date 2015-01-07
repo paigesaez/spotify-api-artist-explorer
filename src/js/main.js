@@ -1,6 +1,6 @@
   
   var BASE_URL = 'https://api.spotify.com/v1/';
-  var SEARCH_LIMIT = 10;
+  var SEARCH_LIMIT = 5;
   var RELATED_LIMIT = 6;
   var $ajaxlog = $('#ajaxlog');  
   var $searchResults = $('#searchresults');
@@ -54,6 +54,7 @@
     console.log('renderedTemplate: ', $renderedTemplate);
     $spotifyResults.html($renderedTemplate);
     getRelatedByID(selectedID);
+    //$searchResults.html('');
   });
   
 searchArtists('Dave Matthews');
