@@ -55,7 +55,17 @@
     $spotifyResults.html($renderedTemplate);
     getRelatedByID(selectedID);
     //$searchResults.html('');
+    //$('#card-toggler').slideToggle(3000);
+    $('#searchcard').addClass('hidden');
+    $('#hiddenrow').removeClass('hidden').addClass('animated bounceInDown');
   });
+  
+  
+  $('body').on('click', '#searchagainbutton', function(e) {
+    $('#searchcard').removeClass('hidden').addClass('animated bounceInDown');
+    $('#hiddenrow').removeClass('animated bounceInDown').addClass('hidden'); 
+  });
+  
   
 searchArtists('Dave Matthews');
   

@@ -14,12 +14,109 @@
 .col33 {
   border: 1px solid blue;
 }
+
+
+
+.valign-demo {
+  border: 1px solid blue;
+
+}
+
+
+.modal-header.brand-success {
+  background-color: #5cb85c;
+  color: #fff;
+  padding: 15px;
+}
+
+.modal-body {
+  position: relative;
+  padding: 15px;
+}
+
+
+.modal {
+  padding: 0;
+}
+
+.modal-title {
+  margin: 0;
+  line-height: 1.42857143;
+}
+
+.modal-footer {
+  margin-top: 15px;
+  padding: 14px 15px 15px;
+  text-align: right;
+  border-top: 1px solid #e5e5e5;
+}
+
+.card-panel {
+  padding: 0;
+}
+
+.card-panel-title {
+  margin: 0;
+  line-height: 1.42857143;
+}
+
+.card-panel-footer {
+  margin-top: 5px;
+  padding: 14px 15px 15px;
+  text-align: right;
+}
+.card-panel-header {
+  background-color: rgba(0,0,0,.9) !important;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  color: #fff;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.card-panel-body {
+  position: relative;
+  padding: 20px;
+}
+
+
+.card-panel-title i.mdi-action-search {
+  color: #84bd00;
+  margin-right: 30px;
+}
+
+.mdi-navigation-expand-more {
+  color: #84bd00;
+  font-size: 40px;
+}
+
+
+.hidden {
+  display: none;
+}
+
+.card .card-image {
+  height: 175px;
+}
+
 </style>
 
 </head>
 <body>
 
+<!-- Ajax Modal -->
 
+<div id="ajaxmodal" class="modal">
+  <div class="modal-header brand-success">
+      <h4 class="modal-title">Log Of Ajax Calls</h4>
+  </div>
+  <div class="modal-body">
+    <p id="ajaxlog"></p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary waves-effect modal-close">Close</button>
+  </div>
+</div>
 
 
 
@@ -36,85 +133,61 @@
   </nav>
 
 
-  <div class="section no-pad-bot" id="index-banner">
+
+
+<div class="section no-pad-bot" id="index-banner">
     <div class="container">
-      <div class="row row-no-bottom-margin">
-        <div class="input-field col s6">
-          <i class="mdi-av-my-library-music prefix"></i>
-          <input id="txtArtistSearch" type="text">
-          <label for="txtArtistSearch">Enter An Artist's Name</label>
-        </div>
-        <div class="col s6">
-           <button type="button" class="btn btn-primary" id="btnsearchartists">
-            Search For Artists
-          </button>
+    
+       <div class="row row-no-bottom-margin center hidden" id="hiddenrow">
+          <div class="col s12">
+            <a class="waves-effect waves-light btn-large" id="searchagainbutton"><i class="mdi-action-search left"></i>Search Again</a>
+         </div>
+      </div>
+
+
+       <div class="row row-no-bottom-margin">
+        <div class="col s8 offset-s2">
+          <div class="card-panel" id="searchcard"><!--start card-->
+            <div class="card-panel-header">
+                <h4 class="card-panel-title"><i class="mdi-action-search"></i> Search For An Artist</h4>
+            </div>
+             <div class="card-panel-body">
+               <div class="row row-no-bottom-margin" style="border: 0px solid red;">
+                <div class="col s9">
+                  <div class="input-field">
+                    <i class="mdi-av-my-library-music prefix"></i>
+                    <input id="txtArtistSearch" type="text">
+                    <label for="txtArtistSearch">Enter An Artist's Name</label>
+                  </div>
+                </div>
+                <div class="col s3" style="margin-top: 5px;">
+                  <button type="button" class="btn btn-primary waves-effect modal-close" id="btnsearchartists">Search</button>
+                 </div>
+              </div>
+              <div class="row row-no-bottom-margin" style="border: 0px solid red;">
+                <div class="col s12">
+                   <ul id="searchresults"></ul>
+                </div>
+              </div>
+            </div>
+          </div><!--end card-->
+
+
         </div>
       </div>
-      <div class="row row-no-bottom-margin" style="border: 0px solid red;">
-        <div class="col s12">
-           <ul id="searchresults"></ul>
-        </div>
-      </div>
-      <div id="spotifyresults">    
+
+
+      <div id="spotifyresults">
       <!--template data populated from API call will be inserted here-->
       </div>
+
     </div>
-  </div>
+</div>
 
-  
-  <!--
-    <div class="preloader-wrapper big active">
-      <div class="spinner-layer spinner-blue">
-        <div class="circle-clipper left">
-          <div class="circle"></div>
-        </div><div class="gap-patch">
-          <div class="circle"></div>
-        </div><div class="circle-clipper right">
-          <div class="circle"></div>
-        </div>
-      </div>
 
-      <div class="spinner-layer spinner-red">
-        <div class="circle-clipper left">
-          <div class="circle"></div>
-        </div><div class="gap-patch">
-          <div class="circle"></div>
-        </div><div class="circle-clipper right">
-          <div class="circle"></div>
-        </div>
-      </div>
 
-      <div class="spinner-layer spinner-yellow">
-        <div class="circle-clipper left">
-          <div class="circle"></div>
-        </div><div class="gap-patch">
-          <div class="circle"></div>
-        </div><div class="circle-clipper right">
-          <div class="circle"></div>
-        </div>
-      </div>
 
-      <div class="spinner-layer spinner-green">
-        <div class="circle-clipper left">
-          <div class="circle"></div>
-        </div><div class="gap-patch">
-          <div class="circle"></div>
-        </div><div class="circle-clipper right">
-          <div class="circle"></div>
-        </div>
-      </div>
-    </div>
-    
-    -->
 
-<!-- Ajax Modal -->
-  <div id="ajaxmodal" class="modal">
-    <h4>Log Of Ajax Calls</h4>
-    <p id="ajaxlog"></p>
-    <a href="#" class="waves-effect btn-flat modal-close">Close</a>
-  </div>
-
-  
 <script id="relatedartisttemplate" type="text/x-jquery-tmpl">
   <div class="col m2">
     <div class="card small animated bounceInDown">
@@ -124,13 +197,13 @@
       <div class="card-content">
         <span class="card-title grey-text text-darken-4">${name}</span>
       </div>
-    </div>        
+    </div>
   </div>
 </script>
-        
+
   <script id="selectedartisttemplate" type="text/x-jquery-tmpl">
      <div class="row row-no-bottom-margin" style="margin-bottom: 0; padding-bottom: 0;">
-        <div class="col s4">&nbsp;</div>     
+        <div class="col s4">&nbsp;</div>
         <div class="col s4">
           <div class="card animated bounceInDown">
               <div class="card-image waves-effect waves-block waves-light"><img src="${images[0].url}"></div>
@@ -143,55 +216,55 @@
               </div>
           </div>
        </div>
-        <div class="col s4">&nbsp;</div>        
+        <div class="col s4">&nbsp;</div>
       </div>
       <div class="animated fadeIn">
         <div class="row row-no-bottom-margin">
-          <div class="col s6 offset-s6 border-left" style="height: 50px;"></div>      
-        </div>      
+          <div class="col s6 offset-s6 border-left" style="height: 50px;"></div>
+        </div>
         <div class="row row-no-bottom-margin">
           <div class="col s1 border-right"></div>
-          <div class="col s1 border-top"></div> 
-          <div class="col s1 border-top border-right"></div>
-          <div class="col s1 border-top"></div>
-          <div class="col s1 border-top border-right"></div> 
           <div class="col s1 border-top"></div>
           <div class="col s1 border-top border-right"></div>
-          <div class="col s1 border-top"></div> 
+          <div class="col s1 border-top"></div>
           <div class="col s1 border-top border-right"></div>
           <div class="col s1 border-top"></div>
-          <div class="col s1 border-top border-right"></div> 
-          <div class="col s1"></div>        
-        </div>        
+          <div class="col s1 border-top border-right"></div>
+          <div class="col s1 border-top"></div>
+          <div class="col s1 border-top border-right"></div>
+          <div class="col s1 border-top"></div>
+          <div class="col s1 border-top border-right"></div>
+          <div class="col s1"></div>
+        </div>
       </div>
-       <div class="row" id="relatedartists"> 
-      
+       <div class="row" id="relatedartists">
+
 
       </div>
       <!--
       <div class="row row-no-bottom-margin">
         <div class="col s1 border-right"></div>
-        <div class="col s1"></div> 
-        <div class="col s1 border-right"></div>
-        <div class="col s1"></div>
-        <div class="col s1 border-right"></div> 
         <div class="col s1"></div>
         <div class="col s1 border-right"></div>
-        <div class="col s1"></div> 
+        <div class="col s1"></div>
         <div class="col s1 border-right"></div>
         <div class="col s1"></div>
-        <div class="col s1 border-right"></div> 
-        <div class="col s1"></div>        
+        <div class="col s1 border-right"></div>
+        <div class="col s1"></div>
+        <div class="col s1 border-right"></div>
+        <div class="col s1"></div>
+        <div class="col s1 border-right"></div>
+        <div class="col s1"></div>
       </div>
       -->
       <div class="row" id="subrelated">
-        <div class="col s2" id="subrelated-0"></div> 
+        <div class="col s2" id="subrelated-0"></div>
         <div class="col s2" id="subrelated-1"></div>
         <div class="col s2" id="subrelated-2"></div>
         <div class="col s2" id="subrelated-3"></div>
         <div class="col s2" id="subrelated-4"></div>
         <div class="col s2" id="subrelated-5"></div>
-      </div>   
+      </div>
   </script>
 
 
@@ -240,7 +313,7 @@
   <script src="js/typeahead.bundle.min.js"></script>
   <script src="js/materialize.min.js"></script>
   <script src="src/js/main.js"></script>
-  
+
   <script>
 
 

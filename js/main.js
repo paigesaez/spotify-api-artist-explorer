@@ -1,6 +1,6 @@
   
   var BASE_URL = 'https://api.spotify.com/v1/';
-  var SEARCH_LIMIT = 10;
+  var SEARCH_LIMIT = 5;
   var RELATED_LIMIT = 6;
   var $ajaxlog = $('#ajaxlog');  
   var $searchResults = $('#searchresults');
@@ -54,9 +54,20 @@
     console.log('renderedTemplate: ', $renderedTemplate);
     $spotifyResults.html($renderedTemplate);
     getRelatedByID(selectedID);
+    //$searchResults.html('');
+    //$('#card-toggler').slideToggle(3000);
+    $('#searchcard').addClass('hidden');
+    $('#hiddenrow').removeClass('hidden').addClass('animated bounceInDown');
   });
   
-//searchArtists('Dave Matthews');
+  
+  $('body').on('click', '#searchagainbutton', function(e) {
+    $('#searchcard').removeClass('hidden').addClass('animated bounceInDown');
+    $('#hiddenrow').removeClass('animated bounceInDown').addClass('hidden'); 
+  });
+  
+  
+searchArtists('Dave Matthews');
   
   function getRelatedByID(artistID) {
     return $.get(BASE_URL+'artists/'+artistID+'/related-artists')
