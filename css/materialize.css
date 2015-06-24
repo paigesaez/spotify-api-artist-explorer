@@ -6783,7 +6783,7 @@ small {
   line-height: 48px;
 }
 .card .card-action {
-  border-top: 1px solid rgba(160, 160, 160, 0.2);
+  /* border-top: 1px solid rgba(160, 160, 160, 0.2); */
   padding: 16px;
 }
 .card .card-reveal {
@@ -7002,7 +7002,7 @@ ul.tabs li.tab {
 .btn, .btn-large {
   text-decoration: none;
   color: #FFF;
-  background-color: #84bd00;
+  background-color: #2196F3;
   text-align: center;
   letter-spacing: .8px;
   -webkit-transition: 0.2s ease-out;
@@ -7013,7 +7013,7 @@ ul.tabs li.tab {
   cursor: pointer;
 }
 .btn:hover, .btn-large:hover {
-  background-color: #96d700;
+  background-color: #39a1f4;
 }
 
 .btn-floating {
@@ -7024,7 +7024,7 @@ ul.tabs li.tab {
   height: 37px;
   line-height: 37px;
   padding: 0;
-  background-color: #84bd00;
+  background-color: #2196F3;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
@@ -7431,7 +7431,7 @@ select:focus {
 
 button:focus {
   outline: none;
-  background-color: #a8f000;
+  background-color: #51adf6;
 }
 
 label {
@@ -7471,7 +7471,7 @@ label {
 .input-field input[type=email]:focus + label,
 .input-field input[type=date]:focus + label,
 .input-field textarea:focus + label {
-  color: #84bd00;
+  color: #03a9f4;
 }
 .input-field input[type=text].valid,
 .input-field input[type=password].valid,
@@ -7504,7 +7504,7 @@ label {
   transition: color 0.2s;
 }
 .input-field .prefix.active {
-  color: #84bd00;
+  color: #03a9f4;
 }
 .input-field .prefix ~ input {
   margin-left: 3rem;
@@ -7538,7 +7538,7 @@ textarea {
   outline: none;
   height: 3rem;
   width: 100%;
-  font-size: 1rem;
+  font-size: 2rem;
   margin: 0 0 15px 0;
   padding: 0;
   -webkit-box-shadow: none;
@@ -7559,10 +7559,10 @@ input[type=password]:focus,
 input[type=email]:focus,
 input[type=date]:focus,
 textarea:focus {
-  border-bottom: 1px solid #84bd00;
-  -webkit-box-shadow: 0 1px 0 0 #84bd00;
-  -moz-box-shadow: 0 1px 0 0 #84bd00;
-  box-shadow: 0 1px 0 0 #84bd00;
+  /* border-bottom: 1px solid #03a9f4; */
+  /* -webkit-box-shadow: 0 1px 0 0 #03a9f4; */
+  -moz-box-shadow: 0 1px 0 0 #03a9f4;
+  /* box-shadow: 0 1px 0 0 #03a9f4; */
 }
 
 textarea {
