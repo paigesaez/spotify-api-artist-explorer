@@ -1,4 +1,4 @@
-# spotify api artist explorer. 
+# spotify api artist explorer
 Experimenting with Spotify API, Materialize CSS, Animate CSS
 
 Forked from https://github.com/mendacitees/spotify-materialize 
