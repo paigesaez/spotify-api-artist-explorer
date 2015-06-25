@@ -1,37 +1,37 @@
 
   var BASE_URL = 'https://api.spotify.com/v1/';
   var SEARCH_LIMIT = 1;
-  var RELATED_LIMIT = 3;
+  var RELATED_LIMIT = 50;
   var $searchResults = $('#searchresults');
   var $selectedArtistTemplate = $('#selectedartisttemplate');
   var $relatedArtistTemplate = $('#relatedartisttemplate');
   var $spotifyResults = $('#spotifyresults');
-  var searchResultData = {};
   var relatedArtists = [];
 
-  $('#btnsearchartists').on('click', function(e) {
+  $('#btnsearchartists').on('click', function() {
     // console.log( $('#txtArtistSearch') );
     var query = $('#txtArtistSearch').val();
     if (query.length > 2) {
       $searchResults.html('');
       searchArtists(query);
     }
+    setTimeout(function(){renderSearchResults(relatedArtists);}, 2000);
   });
 
 
-  $('body').on('click', '.artist', function(e) {
-    e.preventDefault();
-    selectedIndex = $(this).attr('data-selected-index');
-    selectedID = $(this).attr('href');
-    selectedArtistData = searchResultData.artists.items[selectedIndex];
-    console.log('passed to template1: ', selectedArtistData);
-    var $renderedTemplate = $selectedArtistTemplate.tmpl(selectedArtistData);
-    console.log('renderedTemplate: ', $renderedTemplate);
-    $spotifyResults.html($renderedTemplate);
-    getRelatedByID(selectedID);
-    $('#searchcard').addClass('hidden');
-    $('#hiddenrow').removeClass('hidden').addClass('animated bounceInDown');
-  });
+  // $('#btnsearchartists').click(function(e) {
+  //   e.preventDefault();
+  //   console.log('clicked');
+  //   renderSearchResults(relatedArtists);
+
+
+    // selectedArtistData = searchResultData.artists.items[selectedIndex];
+    // console.log('passed to template1: ', selectedArtistData);
+    // var $renderedTemplate = $selectedArtistTemplate.tmpl(selectedArtistData);
+    // console.log('renderedTemplate: ', $renderedTemplate);
+    // $spotifyResults.html($renderedTemplate);
+    // getRelatedByID(selectedID);
+   // });
 
 
 // ajax call 1: search for the artist, return the artist object & their ID
@@ -46,12 +46,13 @@
     };
 
     var url = BASE_URL+'search';
+    relatedArtists = [];
     // return $.get(url, oData);
     $.get(url, oData)
     //pass the artist ID to getRelatedByID
       .pipe(function(data) {
-        console.log("data...");
-        console.log(data.artists.items[0].id);
+        // console.log("data...");
+        // console.log(data.artists.items[0].id);
         getRelatedByID(data.artists.items[0].id);
       });
   }
@@ -84,7 +85,7 @@ function storeArtists(artists) {
     relatedArtists.push(artist);
   }
 
-  for (var x = 0; x < 3; x ++){
+  for (var x = 0; x < 50; x ++){
     getArtistAlbums(relatedArtists[x]);
   }
 }
@@ -92,7 +93,7 @@ function storeArtists(artists) {
 function getArtistAlbums(artist) {
   var oData = {
     offset: 0,
-    limit: 3,
+    limit: 50,
     album_type: 'album'
   };
 
@@ -119,53 +120,21 @@ function addAlbumData(albums){
   return albumData;
 }
 
+// render the search results (artist & album object) to html:
 
-// // render the artists object to html:
-
-  function renderSearchResults(response) {
-//look to his example on github
-
-
- var ul = $('<ul>');
-
- for (var i = artists.length - 1; i >= 0; i--) {
-
-  var li = $('<li>').addClass('artist').append(artists[i]);
-   ul.append(li);
+function renderSearchResults(response) {
+  $('#relatedArtistsResults').html("");
+  for (var i = 0; i < response.length; i++) {
+    $('#relatedArtistsResults').append('<li class="artist"><div class="col s12 m12 l6"><div class="card"><div class="card-image"><img src="'+response[i].albums[0].image+'" /><span class="card-title"><a href="'+response[i].albums[0].link+'">'+response[i].albums[0].name+'</a></span></div><div class="card-content"><p>I am a very simple card. I am good at containing small bits of information.</p></div><div class="card-action"><a href="'+response[i].link+'"">'+response[i].name+'</a></div></div></div></li>');
   }
-
- $('#searchResults').append(ul);
-
+}
 
 
-   }
-
-
-
-//        result += '<li>Artist Image</li><li><a class="artist" data-selected-index="'+i+'" data-artist-name="'+artistName+'" href="'+artistID+'">'+artistName+'</a></li>';
-
-//       //print artists and their albums
-
-//         result +='<li><a class="albumName" data-selected-index="'+i+'" data-album-name="'+albumName+'" href="'+spotifyLink+'">'+albumName+'</a></li><li><a class="albumArt" data-selected-index="'+i+'" data-album-art="'+albumArt+'" href="'+spotifyLink+'">'+albumArt+'</a></li><li><a class="playableLink" data-selected-index="'+i+'" data-playable-link="'+playableLink+'" href="'+playableLink+'">'+playableLink+'</a></li>';
-//       }
-
-
-//     }
-//     $searchResults.html(result);
-// }
-
-
-//   function renderRelatedTemplate(relatedArtists) {
-//     console.log('relatedArtists: ', relatedArtists);
-//     console.log('passed to template2: ', relatedArtists.artists);
-//     var $renderedTemplate = $relatedArtistTemplate.tmpl(relatedArtists.artists);
-//     console.log('renderedTemplate: ', $renderedTemplate);
-//     $('#relatedartists').html($renderedTemplate);
-//   }
+//waypoints sticky search
+var sticky = new Waypoint.Sticky({
+  element: $('.searchArtists')[0]
+});
 
 
 
 
-// function justDisplayResponse(response) {
-//   console.log('response: ', response);
-// }

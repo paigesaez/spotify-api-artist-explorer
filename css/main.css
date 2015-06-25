@@ -3,16 +3,13 @@ body {
   background-color: #fdfdfd;
 }
 
-.red {
-  border: 1px solid red;
-}
 a {
 color: #000;
 text-decoration:none;
 }
 
 a:hover {
-text-decoration:none;
+text-decoration:underline;
 }
 
 li.artist .card-panel{
@@ -24,6 +21,32 @@ height: 20em;
   border: 1px solid red;
 }
 
+.sticky-wrapper {
+  position: relative;
+}
+
+.searchArtists {
+  position: absolute;
+  top: 30px;
+
+}
+
+.stuck {
+  position:fixed;
+  top: 15px;
+  width: 473px;
+}
+
+.card a, .card a:hover {
+color: #363636;
+}
+.card .card-title {
+  font-size: 1.1em;
+}
+
+.card-image .card-title a {
+  color: #fff;
+}
 .card-panel {
   padding: 2em;
 }

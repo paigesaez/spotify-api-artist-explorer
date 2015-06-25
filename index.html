@@ -9,84 +9,56 @@
     <link href="css/main.css" type="text/css" rel="stylesheet">
   </head>
   <body>
-    <div class="section" id="index-banner">
-      <div class="container">
-        <div class="row">
-          <div class="col s6" id="searchcard">
+    <div class="container">
+      <div class="row">
+        <div class="col s12 m6 l6"> <!-- left column -->
+        <div class="sticky-wrapper waypoint">
+          <div class="searchArtists">
             <div class="card-panel white"><!--start card-->
             <h1>Who are you looking up?</h1>
             <div class="input-field">
               <input id="txtArtistSearch" type="text">
               <button type="button" class="btn" id="btnsearchartists">Search</button>
             </div>
-          </div>
-          <!-- <ul for search results not shown -->
-          <ul><li><div class="">
-            <div class="card-panel white lighten-5 z-depth-1">
-              <div class="row valign-wrapper">
-                <div class="col s2">
-                  <img src="http://materializecss.com/images/yuna.jpg" alt="" class="circle responsive-img" id="artist.image"> <!-- notice the "circle" class -->
-                </div>
-                <div class="col s10">
-                  <span class="black-text">
-                  James Mother Fuckin' Blake is a hottie from England. </span>
-                </div>
+            </div> <!-- end search card -->
+            <div class="card-panel white"> <!-- start card-->
+            <div class="row valign-wrapper">
+              <div class="col s2">
+                <img src="http://materializecss.com/images/yuna.jpg" alt="" class="circle responsive-img" id="artist.image"> <!-- notice the "circle" class -->
+              </div>
+              <div class="col s10">
+                <span class="black-text">
+                James Mother Fuckin' Blake is a hottie from England. </span>
               </div>
             </div>
-          </div>
-        </li>
-      </ul>
-      </div><!--  end first col -->
-      <div class="col s6">
-        <ul id="relatedArtistResults"><!--related artists & albums-->
-            <li class="artist">
+            </div> <!-- end card -->
+            </div> <!-- end searchArtists -->
+            </div><!--  end sticky wrapper -->
+            </div> <!-- end left column -->
+            <div class="col s12 m6 l6"> <!-- right column -->
 
 
-              <div class="card">
-              <div class="card-content">
-                <div class="row valign-wrapper">
-                  <div class="col s2">
-                    <img src="http://materializecss.com/images/yuna.jpg" alt="" class="circle responsive-img" id="artist.image"> <!-- notice the "circle" class -->
-                  </div>
-                  <div class="col s10"><span class="black-text">{{artist.name.uri}}</span>
-                  </div>
-                </div>
-              </div>
 
-               <div class="card-image" id="album-img">
-                <img src="http://materializecss.com/images/sample-1.jpg">
-                <span class="card-title">{{album.name.uri}}</span>
-              </div>
 
-               <div class="card-image" id="album-img">
-                <img src="http://materializecss.com/images/sample-1.jpg">
-                <span class="card-title">{{album.name.uri}}</span>
-              </div>
 
-               <div class="card-image" id="album-img">
-                <img src="http://materializecss.com/images/sample-1.jpg">
-                <span class="card-title">{{album.name.uri}}</span>
-              </div>
 
-            <div class="card-action">
 
-              <a href="#">{{artist.uri}}</a>
-            </div>
-          </div>
-            </li>
+
+            <ul id="relatedArtistsResults"><!--related artists & albums-->
           </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!--  Scripts-->
-  <script src="js/jquery.min.js"></script>
-  <script src="js/jquery.tmpl.min.js"></script>
-  <script src="js/typeahead.bundle.min.js"></script>
-  <script src="js/materialize.min.js"></script>
-  <script src="js/spotify-web-api.js"></script>
-  <script src="js/localstoragedb.min.js"></script>
-  <script src="js/spotifykeys.js"></script>
-  <script src="js/main.js"></script>
-</body>
-</html>
+          </div> <!-- end right column -->
+          </div><!-- end row -->
+          </div> <!-- end container -->
+          <!--  Scripts-->
+          <script src="js/jquery.min.js"></script>
+          <script src="js/jquery.tmpl.min.js"></script>
+          <script src="js/typeahead.bundle.min.js"></script>
+          <script src="node_modules/waypoints/lib/jquery.waypoints.min.js"></script>
+          <script src="node_modules/waypoints/lib/shortcuts/sticky.min.js"></script>
+          <script src="js/materialize.min.js"></script>
+          <script src="js/spotify-web-api.js"></script>
+          <script src="js/localstoragedb.min.js"></script>
+          <script src="js/spotifykeys.js"></script>
+          <script src="js/main.js"></script>
+        </body>
+      </html>
