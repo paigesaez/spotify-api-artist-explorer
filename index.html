@@ -11,33 +11,18 @@
   <body>
     <div class="container">
       <div class="row">
-        <div class="col s12 m6 l6"> <!-- left column -->
-        <div class="sticky-wrapper waypoint">
-          <div class="searchArtists">
-            <div class="card-panel white"><!--start card-->
-            <h1>If you </h1>
-            <div class="input-field">
-              <input id="txtArtistSearch" type="text">
-              <button type="button" class="btn" id="btnsearchartists" onclick="Materialize.showStaggeredList('#relatedArtistResults')">Search</button>
-            </div>
+        <div class="col s12 m4 l4 left-column"> <!-- left column -->
+        <div class="sticky-wrapper">
+            <div class="searchArtists"><!--start card-->
+            <h1>Punch in a musician you like. </h1>
+            <form class="input-field">
+              <input id="txtArtistSearch" type="text" required>
+              <button type="button" class="btn col s12 m4 l4" id="btnsearchartists">Search</button>
+            </form>
             </div> <!-- end search card -->
-            <div class="card-panel white"> <!-- start card-->
-            <div class="row valign-wrapper">
-              <div class="col s2">
-                <img src="http://materializecss.com/images/yuna.jpg" alt="" class="circle responsive-img" id="artist.image"> <!-- notice the "circle" class -->
-              </div>
-              <div class="col s10">
-                <span class="black-text">
-                James Mother Fuckin' Blake is a hottie from England. </span>
-              </div>
-            </div>
-            </div> <!-- end card -->
-            </div> <!-- end searchArtists -->
             </div><!--  end sticky wrapper -->
             </div> <!-- end left column -->
-            <div class="col s12 m6 l6"> <!-- right column -->
-
-
+            <div class="col s12 m8 l8"> <!-- right column -->
             <ul id="relatedArtistsResults"><!--related artists & albums-->
           </ul>
           </div> <!-- end right column -->
@@ -45,7 +30,9 @@
           </div> <!-- end container -->
           <!--  Scripts-->
           <script src="js/jquery.min.js"></script>
+          <script src="js/jquery.scrollfire.min.js"></script>
           <script src="js/typeahead.bundle.min.js"></script>
+          <script src="node_modules/animate.css/animate.min.css"></script>
           <script src="node_modules/waypoints/lib/jquery.waypoints.min.js"></script>
           <script src="node_modules/waypoints/lib/shortcuts/sticky.min.js"></script>
           <script src="js/materialize.min.js"></script>

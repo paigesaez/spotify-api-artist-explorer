@@ -12,42 +12,25 @@ a:hover {
 text-decoration:underline;
 }
 
-li.artist .card-panel{
+/*li.artist .card-panel {
 height: 20em;
 }
+*/
 
+
+/*
 .album {
   height: 6em;
-  border: 1px solid red;
 }
-
+*/
 .album-title {
-  font-size: 1.6em;
-
+  font-size: 1em;
   background-color: turquoise;
-}
-
-.artist-name {
-
-}
-
-#relatedArtistsResults li {
-opacity: 0;
-}
-.sticky-wrapper {
-  position: relative;
-}
-
-.searchArtists {
-  position: absolute;
-  top: 30px;
-
 }
 
 .stuck {
   position:fixed;
-  top: 15px;
-  width: 473px;
+  width: 396px;
 }
 
 .card a, .card a:hover {
@@ -60,29 +43,41 @@ color: #363636;
 .card-image .card-title a {
   color: #fff;
 }
-.card-panel {
-  padding: 2em;
-}
 
-.card-image {
-margin-bottom: 1em;
-}
 
 .card-image:nth-child(4) {
 margin: 0px;
 }
 
+.searchArtists {
+height: 12em;
+}
+
+.card-image {
+  /* max-height: 225px; */
+}
+.relatedArtistsResults {
+  z-index: 99;
+}
 .card .card-action {
   border: 0;
 }
+
 h1 {
-  font-size: 1.3em;
-  margin-bottom: 0;
-  margin-top: 0;
+  font-size: 1em;
+
+  line-height: 1.2em;
 }
 
-.row {
+.truncated {
+  /* display:inline-block; */
+  max-width: 203px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
 }
+
+
 
 .btn {
   border-radius: 0;
@@ -106,7 +101,10 @@ h1 {
   font-size: 1.3em;
 }
 
-.btn:hover, .btn:active, .btn:visited, .btn:focus {
+.btn:hover,
+.btn:active,
+.btn:visited,
+.btn:focus {
   background-color: #fff;
    color: #000;
   border: 1px solid #000;
@@ -122,17 +120,44 @@ h1 {
 }
 
 
-input[type=text], input[type=password], input[type=email], input[type=date], textarea {
+input[type=text],
+input[type=password],
+input[type=email],
+input[type=date],
+textarea {
   border-bottom: 3px solid turquoise;
   font-size: 3em;
   padding-bottom: 7px;
- margin: .5em 0 1em 0;
+
+  margin: .5em 0 .5em 0;
+  /* width: 11em; */
 }
 
-input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, input[type=date]:focus, textarea:focus, input[type=text]:active, input[type=text]:visited {
+input[type=text]:focus,
+input[type=password]:focus,
+input[type=email]:focus,
+input[type=date]:focus,
+textarea:focus,
+input[type=text]:active,
+input[type=text]:visited {
   border-bottom: 3px solid turquoise;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
 }
 
+
+.container {
+  width: 90%;
+}
+
+
+#search-again {
+  -webkit-animation-duration: 3s;
+  -webkit-animation-delay: 8s;
+  -webkit-animation-iteration-count: 1;
+}
+
+.why {
+  padding: 4em;
+}

@@ -2273,7 +2273,7 @@ dfn {
  * contexts in Firefox 4+, Safari, and Chrome.
  */
 h1 {
-  font-size: 2em;
+  font-size: 1em;
   margin: 0.67em 0;
 }
 
@@ -5939,7 +5939,7 @@ span.badge.new:after {
 }
 @media only screen and (min-width: 993px) {
   .container {
-    width: 70%;
+    width: 80%;
   }
 }
 .container .row {
@@ -6743,7 +6743,7 @@ small {
   right: 0;
 }
 .card .card-image {
-  position: relative;
+  /* position: relative; */
   overflow: hidden;
 }
 .card .card-image img {

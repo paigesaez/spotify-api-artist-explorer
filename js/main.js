@@ -8,8 +8,20 @@
   var $spotifyResults = $('#spotifyresults');
   var relatedArtists = [];
 
+
+
+// submit form on enter
+$('.input-field').keydown(function(e) {
+var key = e.which;
+if (key == 13) {
+  e.preventDefault();
+// As ASCII code for ENTER key is "13"
+  $('#btnsearchartists').trigger('click'); // Submit form code
+}
+});
+
+
   $('#btnsearchartists').on('click', function() {
-    // console.log( $('#txtArtistSearch') );
     var query = $('#txtArtistSearch').val();
     if (query.length > 2) {
       $searchResults.html('');
@@ -105,7 +117,7 @@ function addAlbumData(albums){
 function renderSearchResults(response) {
   $('#relatedArtistsResults').html("");
   for (var i = 0; i < response.length; i++) {
-$('#relatedArtistsResults').append('<li class="artist"><div class="col s12 m12 l6"><div class="card"><div class="card-image"><img src="'+response[i].albums[0].image+'" /></div><div class="card-action"><ul><li><a href="'+response[i].albums[0].link+'" class="album-title">'+response[i].albums[0].name+'</a></li><li><a href="'+response[i].link+'" class="artist-name">'+response[i].name+'</a></li></ul></div></div></div></li>');
+$('#relatedArtistsResults').append('<li class="artist"><div class="col s12 m4 l4"><div class="card animated bounceInDown"><div class="card-image"><img src="'+response[i].albums[0].image+'" /></div><div class="card-action truncated"><ul><li><a href="'+response[i].albums[0].link+'" class="album-title">'+response[i].albums[0].name+'</a></li><li><a href="'+response[i].link+'" class="artist-name">'+response[i].name+'</a></li></ul></div></div></div></li>');
   }
 }
 
@@ -115,7 +127,6 @@ $('#relatedArtistsResults').append('<li class="artist"><div class="col s12 m12 l
 var sticky = new Waypoint.Sticky({
   element: $('.searchArtists')[0]
 });
-
 
 
 
