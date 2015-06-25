@@ -22,13 +22,18 @@ height: 20em;
 }
 
 .album-title {
+  font-size: 1.6em;
 
+  background-color: turquoise;
 }
 
 .artist-name {
 
 }
 
+#relatedArtistsResults li {
+opacity: 0;
+}
 .sticky-wrapper {
   position: relative;
 }

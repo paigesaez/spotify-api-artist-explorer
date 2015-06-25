@@ -1,7 +1,7 @@
 
   var BASE_URL = 'https://api.spotify.com/v1/';
-  var SEARCH_LIMIT = 1;
   var RELATED_LIMIT = 20;
+  var SEARCH_LIMIT = 1;
   var $searchResults = $('#searchresults');
   var $selectedArtistTemplate = $('#selectedartisttemplate');
   var $relatedArtistTemplate = $('#relatedartisttemplate');
